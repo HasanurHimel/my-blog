@@ -5,8 +5,8 @@ This my blog site where get update news and some programming tutorial . here use
 
 ## Packages install
 
--Run 'composer require barryvdh/laravel-debugbar --dev'
--Run 'composer require --dev barryvdh/laravel-ide-helper'
+- Run 'composer require barryvdh/laravel-debugbar --dev' .
+- Run 'composer require --dev barryvdh/laravel-ide-helper' .
 
 
 
