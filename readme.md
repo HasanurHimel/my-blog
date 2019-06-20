@@ -5,17 +5,17 @@ This my blog site where get update news and some programming tutorial . here use
 
 ## Packages install
 
--Run "composer require barryvdh/laravel-debugbar --dev" .
--Run "composer require --dev barryvdh/laravel-ide-helper" .
+-Run 'composer require barryvdh/laravel-debugbar --dev'
+-Run 'composer require --dev barryvdh/laravel-ide-helper'
 
 
 
 ## Installation instruction 
 
 - Clon the repo in your local pc
-- Run "composer install"
-- Run "copy .env.example .env"
-- Run "php artisan migrate --seed"
+- Run 'composer install'
+- Run 'copy .env.example .env'
+- Run 'php artisan migrate --seed'
 
 
 
