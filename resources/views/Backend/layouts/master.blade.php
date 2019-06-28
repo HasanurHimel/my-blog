@@ -67,7 +67,7 @@
                                     <li><!-- start message -->
                                         <a href="#">
                                             <div class="pull-left">
-                                                <img src="{{ asset('/') }}backend/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                                <img src="{{ asset('/') }}backend/dist/img/user2-160x160.jpeg" class="img-circle" alt="User Image">
                                             </div>
                                             <h4>
                                                 Support Team
@@ -253,41 +253,36 @@
                     <!-- User Account: style can be found in dropdown.less -->
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="{{ asset('/') }}backend/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                            <span class="hidden-xs">Himel Khan</span>
+                            <img src="{{ asset('/') }}backend/dist/img/user2-160x160.jpeg" class="user-image" alt="User Image">
+                            <span class="hidden-xs">{{ Auth::user()->name }}</span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- User image -->
                             <li class="user-header">
-                                <img src="{{ asset('/') }}backend/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                <img src="{{ asset('/') }}backend/dist/img/user2-160x160.jpeg" class="img-circle" alt="User Image">
 
                                 <p>
-                                    Hasanur Rahman Himel - Web Developer
+                                    {{ Auth::user()->name }} - Web Developer
                                     <small>Member since Nov. 2017</small>
                                 </p>
                             </li>
-                            <!-- Menu Body -->
-                            <li class="user-body">
-                                <div class="row">
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Followers</a>
-                                    </div>
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Sales</a>
-                                    </div>
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Friends</a>
-                                    </div>
-                                </div>
-                                <!-- /.row -->
-                            </li>
+
+
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                    <a href="#" class="btn btn-block btn-success btn-flat">Profile</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                    <a href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();" class="btn btn-block btn-danger btn-flat">{{ __('Logout') }}</a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+
+
                                 </div>
                             </li>
                         </ul>
@@ -305,13 +300,19 @@
     <aside class="main-sidebar">
         <!-- sidebar: style can be found in sidebar.less -->
         <section class="sidebar">
+
+            @if (session('status'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('status') }}
+                </div>
+            @endif
             <!-- Sidebar user panel -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="{{ asset('/') }}backend/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                    <img src="{{ asset('/') }}backend/dist/img/user2-160x160.jpeg" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
-                    <p>Himel Khan</p>
+                    <p>{{ Auth::user()->name }}</p>
                     <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                 </div>
             </div>
@@ -345,8 +346,9 @@
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="#"><i class="fa fa-circle-o"></i> Profile Create</a></li>
-                        <li class="active"><a href=""><i class="fa fa-circle-o"></i> Profile Manage</a></li>
+                        <li class="active"><a href="{{ route('profile.index') }}"><i class="fa fa-circle-o"></i> Create Profile</a></li>
+
+                        <li><a href="{{ route('profile.edit', 1) }}"><i class="fa fa-circle-o"></i>Edit Profile</a></li>
                     </ul>
          </li>
 
@@ -423,10 +425,9 @@
 
     <footer class="main-footer">
         <div class="pull-right hidden-xs">
-            <b>Version</b> 2.4.12
+            <b>Version</b> 1.0
         </div>
-        <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights
-        reserved.
+        <strong>Designer &copy; <a href="#">By Himel</a>.</strong>
     </footer>
 
     <!-- Control Sidebar -->

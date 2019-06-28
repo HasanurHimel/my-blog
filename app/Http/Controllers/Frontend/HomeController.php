@@ -19,6 +19,6 @@ class HomeController extends Controller
         return view('Backend.home');
     }
     public function category(){
-        return view('Backend.login.login');
+        return view('Backend.admin.admin');
     }
 }

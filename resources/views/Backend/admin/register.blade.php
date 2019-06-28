@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Himel Admin | Log in</title>
+    <title>Himel Admin | Register</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -23,35 +23,46 @@
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
-        <a href="../../index2.html"><b>Admin</b>Login</a>
+        <a href="../../index2.html"><b>Admin</b>Register</a>
     </div>
-    <!-- /.login-logo -->
+    <!-- /.admin-logo -->
     <div class="login-box-body">
-        <p class="login-box-msg">Please sign your valid  email & Password</p>
+        <p class="login-box-msg">Register your valid information</p>
 
-        <form action="" method="post">
+        <form action="{{ route('register') }}" method="post" enctype="multipart/form-data">
+            @csrf
 
 
-            <div class="alert alert-danger" role="alert">
-                <span class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-exclamation-sign"></i></span><strong> Please enter your valid information !</strong>
-            </div>
+            <!--            <div class="alert alert-danger" role="alert">-->
+            <!--                <span class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-exclamation-sign"></i></span><strong> Please enter your valid information !</strong>-->
+            <!--            </div>-->
 
 
 
             <div class="form-group has-feedback">
-                <input type="email" class="form-control" placeholder="Email">
+                <input type="text" name="name" class="form-control" placeholder="Your name">
+                <span class="glyphicon glyphicon-header form-control-feedback"></span>
+            </div>
+
+            <div class="form-group has-feedback">
+                <input type="email" name="email" class="form-control" placeholder="Your email">
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
-                <input type="password" class="form-control" placeholder="Password">
+                <input type="text" name="password" class="form-control" placeholder="Password">
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             </div>
 
-                    <div class="checkbox icheck">
-                        <label>
-                            <input type="checkbox"> Remember Me
-                        </label>
-                    </div>
+            <div class="form-group has-feedback">
+                <img class="avatar avatar-16 img-circle" id="output" style="height: 80px; width:80px; background-color: #ccc;border: 2px solid gray">
+                <input onchange="loadFile(event)" type="file" name="photo">
+            </div>
+
+            <div class="checkbox icheck">
+                <label>
+                    <input type="checkbox" name="remember_me"> Remember Me
+                </label>
+            </div>
 
             <div class="form-group">
                 <button type="submit" class="btn btn-block btn-primary btn-block btn-flat">Sign In</button>
@@ -69,9 +80,9 @@
 
 
     </div>
-    <!-- /.login-box-body -->
+    <!-- /.admin-box-body -->
 </div>
-<!-- /.login-box -->
+<!-- /.admin-box -->
 
 <!-- jQuery 3 -->
 <script src="{{ asset('/') }}backend/bower_components/jquery/dist/jquery.min.js"></script>
@@ -87,6 +98,21 @@
             increaseArea: '20%' /* optional */
         });
     });
+</script>
+
+<script type="text/javascript">
+
+
+    var loadFile = function(event) {
+        var reader = new FileReader();
+        reader.onload = function(){
+            var output = document.getElementById('output');
+            output.src = reader.result;
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    };
+
+
 </script>
 </body>
 </html>
