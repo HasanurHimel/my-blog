@@ -13,18 +13,27 @@
     <!-- Ionicons -->
     <link rel="stylesheet" href="{{ asset('/') }}backend/bower_components/Ionicons/css/ionicons.min.css">
     <!-- jvectormap -->
+    @yield('css')
+
+
     <link rel="stylesheet" href="{{ asset('/') }}backend/bower_components/jvectormap/jquery-jvectormap.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('/') }}backend/dist/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
+
+
     <link rel="stylesheet" href="{{ asset('/') }}backend/dist/css/skins/_all-skins.min.css">
+
+
+
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
     <!-- Google Font -->
@@ -338,7 +347,7 @@
 
 
 
-        <li class="active treeview menu-open">
+        <li class="treeview menu-open">
                     <a href="#">
                         <i class="fa fa-dashboard"></i> <span>Profile</span>
                         <span class="pull-right-container">
@@ -346,14 +355,14 @@
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li class="active"><a href="{{ route('profile.index') }}"><i class="fa fa-circle-o"></i> Create Profile</a></li>
+{{--                        <li class="active"><a href="{{ route('profile.index') }}"><i class="fa fa-circle-o"></i> Create Profile</a></li>--}}
 
-                        <li><a href="{{ route('profile.edit', 1) }}"><i class="fa fa-circle-o"></i>Edit Profile</a></li>
+                        <li><a href="{{ route('profile.show', 2) }}"><i class="fa fa-circle-o"></i>Edit Profile</a></li>
                     </ul>
          </li>
 
 
-                <li class="active treeview menu-open">
+                <li class="treeview menu-open">
                     <a href="#">
                         <i class="fa fa-dashboard"></i> <span>Category</span>
                         <span class="pull-right-container">
@@ -361,8 +370,47 @@
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="#"><i class="fa fa-circle-o"></i> Category Create</a></li>
-                        <li class="active"><a href=""><i class="fa fa-circle-o"></i> Category Manage</a></li>
+                        <li><a href="{{ route('category.create') }}"><i class="fa fa-circle-o"></i> Category Create</a></li>
+                        <li class="active"><a href="{{ route('category.index') }}"><i class="fa fa-circle-o"></i> Category Manage</a></li>
+                    </ul>
+                </li>
+
+                <li class="treeview menu-open">
+                    <a href="#">
+                        <i class="fa fa-dashboard"></i> <span>Sub-Category</span>
+                        <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{ route('subCategory.create') }}"><i class="fa fa-circle-o"></i> Sub-Category Create</a></li>
+                        <li class="active"><a href="{{ route('subCategory.index') }}"><i class="fa fa-circle-o"></i> Sub-Category Manage</a></li>
+                    </ul>
+                </li>
+
+                <li class="treeview menu-open">
+                    <a href="#">
+                        <i class="fa fa-dashboard"></i> <span>Carousel Photo</span>
+                        <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{ route('carousel.create') }}"><i class="glyphicon glyphicon-forward"></i> Carousel Create</a></li>
+                        <li class="active"><a href="{{ route('carousel.index') }}"><i class="glyphicon glyphicon-forward"></i> Carousel Manage</a></li>
+                    </ul>
+                </li>
+
+                <li class="treeview menu-open">
+                    <a href="#">
+                        <i class="fa fa-dashboard"></i> <span>Blog</span>
+                        <span class="pull-right-container">
+                       <i class="fa fa-angle-left pull-right"></i>
+                      </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{ route('blog.create') }}"><i class="glyphicon glyphicon-forward"></i> Blog Create</a></li>
+                        <li class="active"><a href="{{ route('blog.index') }}"><i class="glyphicon glyphicon-forward"></i> Blog Manage</a></li>
                     </ul>
                 </li>
 
@@ -633,6 +681,10 @@
 <script src="{{ asset('/') }}backend/bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('/') }}backend/dist/js/adminlte.min.js"></script>
+{{--data table--}}
+@yield('js')
+
+
 <!-- Sparkline -->
 <script src="{{ asset('/') }}backend/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
 <!-- jvectormap  -->
@@ -646,5 +698,8 @@
 <script src="{{ asset('/') }}backend/dist/js/pages/dashboard2.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('/') }}backend/dist/js/demo.js"></script>
+
+
+
 </body>
 </html>

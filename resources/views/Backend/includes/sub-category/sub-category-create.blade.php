@@ -3,20 +3,16 @@
 @section('content')
 
 
-
-
-
-
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header" style="padding-bottom: 40px;">
             <h1>
-                Profile
+                Sub-Category
                 <small>Preview</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li><a href="#" >Create Profile</a></li>
+                <li><a href="#" >Create Sub-Category</a></li>
 
             </ol>
         </section>
@@ -37,7 +33,7 @@
 
                     <div class="panel">
                         <div class="panel-header">
-                            <h2 class="text-center" style="background-color: #9f191f; color: white;"> Make Your Profile</h2>
+                            <h2 class="text-center" style="background-color: #9f191f; color: white;"> Create Your Sub-Catgeory</h2>
                         </div>
 
 
@@ -49,56 +45,48 @@
 
                             <!-- /.box-header -->
                             <div class="">
-                                <form role="form" action="{{ route('profile.update', $profile->id ) }}" method="post" enctype="multipart/form-data">
+                                <form role="form" action="{{ route('subCategory.store') }}" method="post" >
                                 @csrf
-                                @method('PATCH')
+
 
                                 @include('Backend.errors.errors')
 
                                 <!-- text input -->
                                     <div class="form-group">
-                                        <label>Your name</label>
-                                        <input type="text" value="{{ $profile->name }}" name="name" class="form-control" placeholder="Enter name" >
+                                        <label>Category</label>
+                                  <select class="form-control" name="category_id">
+                                      <option value="">__Select your Catgeory__</option>
+                                      @foreach($categories as $category)
+
+                                      <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+
+                                          @endforeach
+                                  </select>
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Your Email</label>
-                                        <input type="email"name="email" value="{{ $profile->email }}" class="form-control" placeholder="Enter email" >
+                                        <label>Sub-Category name</label>
+                                        <input type="text" name="subcategory_name" class="form-control" placeholder="Enter name" >
                                     </div>
+
 
                                     <div class="form-group">
-                                        <label>Designation</label>
-                                        <input type="text" value="{{ $profile->designation }}" name="designation" class="form-control" placeholder="Enter designition">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Experience</label>
-                                        <textarea name="experience" class="form-control" rows="3" placeholder="Enter ...">{{ $profile->experience }}</textarea>
-                                    </div>
-
-
-
-                                    <div class="form-group has-feedback">
-
-
-                                        <img src="{{ $profile->getFirstMediaUrl('profile') }}" class="avatar avatar-16 img-circle" id="output" style="height: 80px; width:80px; background-color: #ccc;border: 2px solid gray">
-
-                                        <input type="file" onchange="loadFile(event)" name="image">
-
+                                        <label>Sub-Category description</label>
+                                        <textarea name="subcategory_description" class="form-control" rows="3" placeholder="Enter ..."></textarea>
                                     </div>
 
 
 
                                     <div class="form-group">
                                         <div class="radio">
-                                            <label><input type="radio" {{ $profile->publication_status ==1 ? 'checked' :'' }} name="publication_status" value="1" class="flat-red">Published</label>
-                                            <label><input type="radio" {{ $profile->publication_status ==0 ? 'checked' :'' }} name="publication_status" value="0" class="flat-red">Unpublished</label>
+                                            <label><input type="radio" name="publication_status" value="1" class="flat-red">Published</label>
+                                            <label><input type="radio" name="publication_status" value="0" class="flat-red">Unpublished</label>
                                         </div>
 
                                     </div>
 
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-block btn-success">Create Category</button>
+                                        <button type="submit" class="btn btn-block btn-success">Create Sub-Category</button>
                                     </div>
 
 
