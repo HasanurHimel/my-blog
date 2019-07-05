@@ -45,7 +45,7 @@
 
                             <!-- /.box-header -->
                             <div class="">
-                                <form role="form" action="{{ route('category.update', $category->id) }}" method="post" >
+                                <form role="form" action="{{ route('category.update', $category->id) }}" method="post">
                                 @csrf
                                     @method('PUT')
 
@@ -108,3 +108,4 @@
 
 
 @endsection
+

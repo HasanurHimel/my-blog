@@ -28,7 +28,7 @@ class ProfileController extends Controller
 
     public function store(Request $request)
     {
-
+//
 //        $validator=Validator::make($request->all(), [
 //
 //            'designation' =>'required|min:5|max:100',

@@ -137,7 +137,8 @@ class CarouselController extends Controller
 
 
         $this->setSuccess('Your Carousel Updated successfully done ');
-        return redirect()->back();
+        return redirect()->route('carousel.index');
+
 
     }
 
@@ -164,7 +165,7 @@ class CarouselController extends Controller
         $this->setSuccess('Your Carousel Published successfully done');
         return redirect()->back();
     }
-    public function unpublishedUnpublished($id){
+    public function unpublishedCarousel($id){
 
         $carousel=Carousel::find($id);
 

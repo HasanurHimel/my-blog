@@ -27,8 +27,6 @@
 
 
 
-
-
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -123,6 +121,7 @@
                                         </a>
                                     </li>
                                     <li>
+
                                         <a href="#">
                                             <div class="pull-left">
                                                 <img src="{{ asset('/') }}backend/dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
@@ -259,26 +258,26 @@
                             </li>
                         </ul>
                     </li>
-                    <!-- User Account: style can be found in dropdown.less -->
+                    <!-- Admin Account: style can be found in dropdown.less -->
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <img src="{{ asset('/') }}backend/dist/img/user2-160x160.jpeg" class="user-image" alt="User Image">
                             <span class="hidden-xs">{{ Auth::user()->name }}</span>
                         </a>
                         <ul class="dropdown-menu">
-                            <!-- User image -->
+                            <!-- Admin image -->
                             <li class="user-header">
                                 <img src="{{ asset('/') }}backend/dist/img/user2-160x160.jpeg" class="img-circle" alt="User Image">
 
                                 <p>
                                     {{ Auth::user()->name }} - Web Developer
-                                    <small>Member since Nov. 2017</small>
+                                    <small>Admin since Nov. 2017</small>
                                 </p>
                             </li>
 
 
                             <!-- Menu Footer-->
-                            <li class="user-footer">
+                            <li class="user-footer" style="background-color: #191f17ab">
                                 <div class="pull-left">
                                     <a href="#" class="btn btn-block btn-success btn-flat">Profile</a>
                                 </div>
@@ -293,6 +292,19 @@
 
 
                                 </div>
+                            </li>
+
+                            <li class="user-footer" style="background-color: #9f191f">
+
+                                @if (Route::has('password.request'))
+                                    <div class="text-center">
+                                        <a href="{{ route('password.request') }}" class="btn btn-block btn-bitbucket btn-flat">{{ __('Change Your Password') }}</a>
+                                    </div>
+                                @endif
+
+
+
+
                             </li>
                         </ul>
                     </li>
@@ -359,7 +371,34 @@
 
                         <li><a href="{{ route('profile.show', 2) }}"><i class="fa fa-circle-o"></i>Edit Profile</a></li>
                     </ul>
-         </li>
+               </li>
+
+                <li class="treeview menu-open">
+                    <a href="#">
+                        <i class="fa fa-dashboard"></i> <span>New Admin</span>
+                        <span class="pull-right-container">
+                       <i class="fa fa-angle-left pull-right"></i>
+                      </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{ route('admin.create') }}"><i class="glyphicon glyphicon-forward"></i> Admin Create</a></li>
+                        <li class="active"><a href="{{ route('admin.index') }}"><i class="glyphicon glyphicon-forward"></i> Admin Manage</a></li>
+                    </ul>
+                </li>
+
+                <li class="treeview menu-open">
+                    <a href="#">
+                        <i class="fa fa-dashboard"></i> <span>Admin Role</span>
+                        <span class="pull-right-container">
+                       <i class="fa fa-angle-left pull-right"></i>
+                      </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li class="active"><a href="{{ route('permission-for.index') }}"><i class="glyphicon glyphicon-forward"></i>Admin Permission-for</a></li>
+                        <li class="active"><a href="{{ route('permission.index') }}"><i class="glyphicon glyphicon-forward"></i>Admin Permission</a></li>
+                        <li><a href="{{ route('role.index') }}"><i class="glyphicon glyphicon-forward"></i>Admin Role</a></li>
+                    </ul>
+                </li>
 
 
                 <li class="treeview menu-open">
@@ -415,8 +454,18 @@
                 </li>
 
 
-
-
+                <li class="treeview menu-open">
+                    <a href="#">
+                        <i class="fa fa-dashboard"></i> <span>Photography</span>
+                        <span class="pull-right-container">
+                       <i class="fa fa-angle-left pull-right"></i>
+                      </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{ route('photography.create') }}"><i class="glyphicon glyphicon-forward"></i> Photo Create</a></li>
+                        <li class="active"><a href="{{ route('photography.index') }}"><i class="glyphicon glyphicon-forward"></i> Photo Manage</a></li>
+                    </ul>
+                </li>
 
 
 
@@ -673,6 +722,7 @@
 </div>
 <!-- ./wrapper -->
 
+
 <!-- jQuery 3 -->
 <script src="{{ asset('/') }}backend/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
@@ -681,8 +731,8 @@
 <script src="{{ asset('/') }}backend/bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('/') }}backend/dist/js/adminlte.min.js"></script>
-{{--data table--}}
-@yield('js')
+
+
 
 
 <!-- Sparkline -->
@@ -699,7 +749,7 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('/') }}backend/dist/js/demo.js"></script>
 
-
+@yield('js')
 
 </body>
 </html>

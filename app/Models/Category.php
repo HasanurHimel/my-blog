@@ -12,4 +12,8 @@ public function subCategory(){
     return $this->hasMany(SubCategory::class);
 }
 
+public function blogs(){
+    return $this->hasMany(Blog::class);
+}
+
 }

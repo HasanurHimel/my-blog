@@ -71,6 +71,7 @@
                                 @php($i=1)
                                 @foreach($subCategories as $subcategory)
 
+
                                     <tr>
                                         <td>{{ $i++ }}</td>
                                         <td>{{ $subcategory->category->category_name }}</td>

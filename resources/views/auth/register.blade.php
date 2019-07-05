@@ -1,7 +1,10 @@
+
+
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+
+    <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -60,6 +63,20 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
+
+                        <div class="form-group">
+                            <label>Mobile</label>
+                            <input type="number" class="form-control" name="mobile" value="{{ old('mobile') }}" placeholder="mobile number.." required>
+                        </div>
+                        <div class="form-group">
+                            <label>Status</label>
+                            <div class="radio">
+                                <label><input type="radio" name="status" value="1" class="flat-red">Activate</label>
+                                <label><input type="radio" name="status" value="0" class="flat-red">DeActivate</label>
+                            </div>
+
+                        </div>
+
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">

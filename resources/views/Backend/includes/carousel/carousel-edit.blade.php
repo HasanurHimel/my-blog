@@ -7,12 +7,12 @@
         <!-- Content Header (Page header) -->
         <section class="content-header" style="padding-bottom: 40px;">
             <h1>
-                Category
+                Carousel
                 <small>Preview</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li><a href="#" >Edit Category</a></li>
+                <li><a href="#" >Edit Carousel</a></li>
 
             </ol>
         </section>
@@ -33,7 +33,7 @@
 
                     <div class="panel">
                         <div class="panel-header">
-                            <h2 class="text-center" style="background-color: #9f191f; color: white;"> Edit Your Catgeory</h2>
+                            <h2 class="text-center" style="background-color: #9f191f; color: white;"> Edit Your Carousel</h2>
                         </div>
 
 
@@ -110,7 +110,6 @@
 
 
 @endsection
-
 
 <script type="text/javascript">
 

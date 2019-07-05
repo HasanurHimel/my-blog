@@ -47,8 +47,8 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $validator=\Validator::make($request->all(), [
-            'subcategory_name' =>'required|min:3|max:50|unique:categories',
-            'subcategory_description' =>'required|min:3|max:150',
+            'category_name' =>'required|min:3|max:50|unique:categories',
+            'category_description' =>'required|min:3|max:150',
             'publication_status' =>'required',
         ]);
 
