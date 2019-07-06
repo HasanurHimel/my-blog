@@ -271,7 +271,7 @@
 
                                 <p>
                                     {{ Auth::user()->name }} - Web Developer
-                                    <small>Admin since Nov. 2017</small>
+                                    <small>Admin since {{ auth()->user()->created_at->toFormattedDateString() }}</small>
                                 </p>
                             </li>
 
@@ -367,25 +367,36 @@
             </span>
                     </a>
                     <ul class="treeview-menu">
-{{--                        <li class="active"><a href="{{ route('profile.index') }}"><i class="fa fa-circle-o"></i> Create Profile</a></li>--}}
 
+                        @can('profile.create', auth()->user())
+                        <li class="active"><a href="{{ route('profile.create') }}"><i class="fa fa-circle-o"></i> Create Profile</a></li>
+                        @endcan
+                        @can('profile.view', auth()->user())
                         <li><a href="{{ route('profile.show', 2) }}"><i class="fa fa-circle-o"></i>Edit Profile</a></li>
+                        @endcan
                     </ul>
                </li>
 
-                <li class="treeview menu-open">
-                    <a href="#">
-                        <i class="fa fa-dashboard"></i> <span>New Admin</span>
-                        <span class="pull-right-container">
-                       <i class="fa fa-angle-left pull-right"></i>
-                      </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="{{ route('admin.create') }}"><i class="glyphicon glyphicon-forward"></i> Admin Create</a></li>
-                        <li class="active"><a href="{{ route('admin.index') }}"><i class="glyphicon glyphicon-forward"></i> Admin Manage</a></li>
-                    </ul>
-                </li>
 
+
+                @can('admins.create',auth()->user())
+                    <li class="treeview menu-open">
+                        <a href="#">
+                            <i class="fa fa-dashboard"></i> <span>New Admin</span>
+                            <span class="pull-right-container">
+                           <i class="fa fa-angle-left pull-right"></i>
+                          </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="{{ route('admin.create') }}"><i class="glyphicon glyphicon-forward"></i> Admin Create</a></li>
+                            <li class="active"><a href="{{ route('admin.index') }}"><i class="glyphicon glyphicon-forward"></i> Admin Manage</a></li>
+                        </ul>
+                    </li>
+                @endcan
+
+
+
+                @can('admins.create',auth()->user())
                 <li class="treeview menu-open">
                     <a href="#">
                         <i class="fa fa-dashboard"></i> <span>Admin Role</span>
@@ -399,8 +410,11 @@
                         <li><a href="{{ route('role.index') }}"><i class="glyphicon glyphicon-forward"></i>Admin Role</a></li>
                     </ul>
                 </li>
+                @endcan
 
 
+
+                @can('categories.create', auth()->user())
                 <li class="treeview menu-open">
                     <a href="#">
                         <i class="fa fa-dashboard"></i> <span>Category</span>
@@ -413,7 +427,10 @@
                         <li class="active"><a href="{{ route('category.index') }}"><i class="fa fa-circle-o"></i> Category Manage</a></li>
                     </ul>
                 </li>
+                @endcan
 
+
+                @can('sub_categories.create', auth()->user())
                 <li class="treeview menu-open">
                     <a href="#">
                         <i class="fa fa-dashboard"></i> <span>Sub-Category</span>
@@ -427,6 +444,9 @@
                     </ul>
                 </li>
 
+                @endcan
+
+                @can('carousels.create', auth()->user())
                 <li class="treeview menu-open">
                     <a href="#">
                         <i class="fa fa-dashboard"></i> <span>Carousel Photo</span>
@@ -439,21 +459,36 @@
                         <li class="active"><a href="{{ route('carousel.index') }}"><i class="glyphicon glyphicon-forward"></i> Carousel Manage</a></li>
                     </ul>
                 </li>
+                @endcan
 
+
+                @can('blogs.viewAny', auth()->user())
                 <li class="treeview menu-open">
+
                     <a href="#">
-                        <i class="fa fa-dashboard"></i> <span>Blog</span>
+                        <i class="fa fa-dashboard"></i><span>Blog</span>
                         <span class="pull-right-container">
                        <i class="fa fa-angle-left pull-right"></i>
                       </span>
                     </a>
+
                     <ul class="treeview-menu">
+                        @can('blogs.create', auth()->user())
                         <li><a href="{{ route('blog.create') }}"><i class="glyphicon glyphicon-forward"></i> Blog Create</a></li>
-                        <li class="active"><a href="{{ route('blog.index') }}"><i class="glyphicon glyphicon-forward"></i> Blog Manage</a></li>
+                        @endcan
+                            @can('blogs.viewAny', auth()->user())
+                            <li class="active"><a href="{{ route('blog.index') }}"><i class="glyphicon glyphicon-forward"></i> Blog Manage</a></li>
+                            @endcan
                     </ul>
                 </li>
+                @endcan
 
 
+
+
+
+
+                @can('photographies.create', auth()->user())
                 <li class="treeview menu-open">
                     <a href="#">
                         <i class="fa fa-dashboard"></i> <span>Photography</span>
@@ -466,6 +501,7 @@
                         <li class="active"><a href="{{ route('photography.index') }}"><i class="glyphicon glyphicon-forward"></i> Photo Manage</a></li>
                     </ul>
                 </li>
+                @endcan
 
 
 

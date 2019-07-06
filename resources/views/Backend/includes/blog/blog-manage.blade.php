@@ -28,19 +28,7 @@
 @section('content')
 
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <h1>
-                Manage Your Blog
-            </h1>
-            <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li><a href="#">Tables</a></li>
-                <li class="active">Blog tables</li>
-            </ol>
-        </section>
 
-        <!-- Main content -->
         <section class="content">
             <div class="row">
                 <div class="col-xs-12">
@@ -49,9 +37,23 @@
 
                     <div class="box">
                         <div class="box-header">
+
+                            <section class="content-header">
+                                <h1>
+                                    Manage Your Blog
+                                </h1>
+                                <ol class="breadcrumb">
+                                    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                                    <li><a href="#">Tables</a></li>
+                                    <li class="active">Blog tables</li>
+                                </ol>
+                            </section>
+
+
                             @include('Backend.errors.errors')
-
-
+                            @can('blogs.create', auth()->user())
+                            <a href="{{ route('blog.create') }}" class="btn btn-success pull-right" >Add new</a>
+                                @endcan
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
@@ -65,7 +67,9 @@
                                     <th>Title</th>
                                     <th>Photo</th>
                                     <th>Author</th>
+                                    @can('blogs.viewAny', auth()->user())
                                     <th>Action Method</th>
+                                        @endcan
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -81,16 +85,26 @@
                                         <td><img src="{{ $blog->getFirstMediaUrl('blog') }}" width="100px" height="40px"></td>
 
                                         <td>{{ $blog->publication_status ==1 ? 'Published' :'Unpublished' }}</td>
+                                        @can('blogs.viewAny', auth()->user())
                                         <td>
+                                            @can('blogs.publication_status', auth()->user())
                                             @if($blog->publication_status==0)
                                                 <a href="{{ route('blog.published', $blog->id) }}" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-arrow-down"></span></a>
                                             @else
                                                 <a href="{{ route('blog.unpublished', $blog->id) }}" class="btn btn-xs btn-bitbucket"><span class="glyphicon glyphicon-arrow-up"></span></a>
                                             @endif
+                                            @endcan
 
+
+                                            @can('blogs.view', auth()->user())
                                             <a href="{{ route('blog.show', $blog->id) }}" class="btn btn-xs btn-success"><span class="glyphicon glyphicon-edit"></span></a>
-                                            <a href="{{ route('blog.trash', $blog->id) }}" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
+                                            @endcan
+
+                                            @can('blogs.delete', auth()->user())
+                                             <a href="{{ route('blog.trash', $blog->id) }}" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
+                                            @endcan
                                         </td>
+                                            @endcan
 
                                     </tr>
                                 @endforeach

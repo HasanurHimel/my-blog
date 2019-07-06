@@ -4,24 +4,6 @@
 
 
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header" style="padding-bottom: 40px;">
-            <h1>
-                Profile
-                <small>Preview</small>
-            </h1>
-            <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li><a href="#" >Create Profile</a></li>
-
-            </ol>
-        </section>
-
-        <!-- Main content -->
-
-
-
-
 
         <section class="content" style="padding-top: 10px;background-color: #9f191f">
             <div class="row">
@@ -53,13 +35,13 @@
 
                                 <!-- text input -->
                                     <div class="form-group">
-                                        <label>Your name</label>
-                                        <input type="text" value="" name="name" class="form-control" placeholder="Enter name" >
+                                        <label>Your Profile Name</label>
+                                        <input type="text" value="{{ auth()->user()->name }}" name="name" class="form-control" placeholder="Enter name" >
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Your Email</label>
-                                        <input type="email"name="email" value="" class="form-control" placeholder="Enter email" >
+                                        <label>Your Profile Email</label>
+                                        <input type="email"name="email" value="{{ auth()->user()->email }}" class="form-control" placeholder="Enter email" >
                                     </div>
 
                                     <div class="form-group">

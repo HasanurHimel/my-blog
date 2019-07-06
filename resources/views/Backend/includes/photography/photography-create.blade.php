@@ -8,31 +8,13 @@
 
 
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header" style="padding-bottom: 40px;">
-            <h1>
-                Photography
-                <small>Preview</small>
-            </h1>
-            <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li><a href="#" >Create Photography</a></li>
-
-            </ol>
-        </section>
-
-        <!-- Main content -->
-
-
-
-
 
         <section class="content" style="padding-top: 10px;background-color: #9f191f">
             <div class="row">
 
 
 
-                <div class="col-md-12">
+                <div class="ol-md-12" style="padding-top: 40px">
 
 
                     <div class="panel">

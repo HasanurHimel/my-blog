@@ -11,8 +11,12 @@ class Profile extends Model implements HasMedia
 {
     use HasMediaTrait;
 
-    protected $fillable=['name', 'email', 'designation', 'experience', 'photo', 'publication_status'];
+    protected $fillable=['admin_id','name', 'email', 'designation', 'experience', 'photo', 'publication_status'];
 
+  public function admin(){
 
+    return $this->belongsTo(Admin::class);
+
+   }
 
 }

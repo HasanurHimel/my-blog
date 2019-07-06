@@ -10,11 +10,14 @@ use App\MOdels\Carousel;
 
 class CarouselController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    public function __construct()
+    {
+        $this->middleware('can:carousels.create');
+    }
+
+
+
     public function index()
     {
         $carousels=Carousel::orderBy('id', 'DESC')->get();

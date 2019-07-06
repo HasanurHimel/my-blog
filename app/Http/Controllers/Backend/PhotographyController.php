@@ -10,11 +10,14 @@ use App\Models\Photography;
 
 class PhotographyController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    public function __construct()
+    {
+        $this->middleware('can:photographies.create');
+    }
+
+
+
     public function index()
     {
         $photos=Photography::orderBy('id', 'DESC')->get();

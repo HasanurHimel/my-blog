@@ -7,16 +7,20 @@ use App\Models\PermissionFor;
 use App\Models\Role;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use phpDocumentor\Reflection\DocBlock\Tags\Author;
 
 
 class RoleController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    public function __construct()
+    {
+     $this->middleware('can:admins.create');
+
+    }
+
+
+
     public function index()
     {
         $roles=Role::with('permissions')->get();

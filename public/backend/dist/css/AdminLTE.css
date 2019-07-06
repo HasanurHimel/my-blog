@@ -88,7 +88,7 @@ body {
 }
 .content-wrapper {
   min-height: calc(100% - 102px);
-  background-color: #ecf0f5;
+  background-color: #9f191f;
   z-index: 800;
 }
 .main-footer {

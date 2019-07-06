@@ -25,23 +25,6 @@
 
 
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header" style="padding-bottom: 40px;">
-            <h1>
-                Blog
-                <small>Preview</small>
-            </h1>
-            <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li><a href="#" >Create Blog</a></li>
-
-            </ol>
-        </section>
-
-        <!-- Main content -->
-
-
-
 
 
         <section class="content" style="padding-top: 10px;background-color: #9f191f">
@@ -73,58 +56,92 @@
                                 @include('Backend.errors.errors')
 
                                 <!-- text input -->
-                                    <div class="form-group">
-                                        <label>Category</label>
-                                        <select class="form-control" name="category_id">
-                                            <option value="">__Select your Catgeory__</option>
-                                            @foreach($categories as $category)
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Category</label>
+                                                <select class="form-control" name="category_id">
+                                                    <option value="">__Select your Catgeory__</option>
+                                                    @foreach($categories as $category)
 
-                                                <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+                                                        <option value="{{ $category->id }}">{{ $category->category_name }}</option>
 
-                                            @endforeach
-                                        </select>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Sub-Category</label>
+                                                <select class="form-control" name="subcategory_id">
+                                                    <option value="">__Select your sub-Catgeory__</option>
+                                                    @foreach($subcategories as $subcategory)
+
+                                                        <option value="{{ $subcategory->id }}">{{ $subcategory->subcategory_name }}</option>
+
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label>Sub-Category</label>
-                                        <select class="form-control" name="subcategory_id">
-                                            <option value="">__Select your sub-Catgeory__</option>
-                                            @foreach($subcategories as $subcategory)
 
-                                                <option value="{{ $subcategory->id }}">{{ $subcategory->subcategory_name }}</option>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Blog Title</label>
+                                                <input type="text" value="{{ old('blog_title') }}" name="blog_title" class="form-control" placeholder="Enter title" >
+                                            </div>
 
-                                            @endforeach
-                                        </select>
+                                        </div>
+
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Author name</label>
+                                                <input type="text" name="author_name" value="{{ old('author_name') }}" class="form-control" placeholder="Enter title" >
+                                            </div>
+                                        </div>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label>Blog Title</label>
-                                        <input type="text" value="{{ old('blog_title') }}" name="blog_title" class="form-control" placeholder="Enter title" >
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Blog short description</label>
+                                                <textarea name="blog_short_description" class="form-control" rows="3" placeholder="Enter ...">{{ old('blog_short_description') }}</textarea>
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Blog Image</label>
+
+                                                <img src="{{ asset('backend\dist\img\avatar5.png') }}" class="avatar avatar-16 img-circle" id="output" style="height: 80px; width:80px; background-color: #0c5460;">
+                                                <input type="file" value="{{ old('blog_image') }}" onchange="loadFile(event)" name="blog_image" class="form-control" >
+
+                                            </div>
+
+                                        </div>
                                     </div>
 
 
-                                    <div class="form-group">
-                                        <label>Blog short description</label>
-                                        <textarea name="blog_short_description" class="form-control" rows="3" placeholder="Enter ...">{{ old('blog_short_description') }}</textarea>
+
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Blog long description</label>
+                                                <textarea name="blog_long_description" id="summary-ckeditor" class="form-control" rows="20" placeholder="Enter ...">{{ old('blog_long_description') }}</textarea>
+                                            </div>
+                                        </div>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label>Blog long description</label>
-                                        <textarea name="blog_long_description" id="summary-ckeditor" class="form-control" rows="20" placeholder="Enter ...">{{ old('blog_long_description') }}</textarea>
-                                    </div>
 
-                                    <div class="form-group">
-                                        <label>Author name</label>
-                                        <input type="text" name="author_name" value="{{ old('author_name') }}" class="form-control" placeholder="Enter title" >
-                                    </div>
 
-                                    <div class="form-group">
-                                        <label>Blog Image</label>
 
-                                        <img class="avatar avatar-16 img-circle" id="output" style="height: 80px; width:80px; background-color: #0c5460;">
-                                        <input type="file" value="{{ old('blog_image') }}" onchange="loadFile(event)" name="blog_image" class="form-control" >
-
-                                    </div>
 
                                     <div class="form-group">
                                         <div class="radio">

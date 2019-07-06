@@ -9,11 +9,13 @@ use App\Models\Category;
 
 class SubCategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    public function __construct()
+    {
+        $this->middleware('can:sub_categories.create');
+    }
+
+
     public function index()
     {
         $subCategories=SubCategory::with('category')->orderBy('id', 'DESC')->get();
