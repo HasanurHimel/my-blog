@@ -1,6 +1,7 @@
 <?php
     NAMESPACE kcfinder;
 ?>
+
 <script src="js/index.php" type="text/javascript"></script>
 <script src="js_localize.php?lng=<?php echo $this->lang ?>" type="text/javascript"></script>
 <?php
@@ -29,7 +30,7 @@ _.uploadURL = "<?php echo text::jsValue($this->config['uploadURL']) ?>";
 _.thumbsURL = _.uploadURL + "/<?php echo text::jsValue($this->config['thumbsDir']) ?>";
 _.opener = <?php echo json_encode($this->opener) ?>;
 _.cms = "<?php echo text::jsValue($this->cms) ?>";
-$.$.kuki.domain = "<?php echo text::jsValue($this->config['cookieDomain']) ?>";
+//$.$.kuki.domain = "<?php //echo text::jsValue($this->config['cookieDomain']) ?>//";
 $.$.kuki.path = "<?php echo text::jsValue($this->config['cookiePath']) ?>";
 $.$.kuki.prefix = "<?php echo text::jsValue($this->config['cookiePrefix']) ?>";
 $(function() { _.resize(); _.init(); });

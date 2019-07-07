@@ -11,6 +11,7 @@ mix.styles([
     'resources/css/jquery-fancybox.css',
     'resources/css/theme.css',
     'resources/css/style.css',
+    'resources/css/prism.css',
 ], 'public/css/all.css')
 
     .scripts([
@@ -22,6 +23,7 @@ mix.styles([
         'resources/js/jquery.newsTicker.min.js',
         'resources/js/jquery.fancybox.pack.js',
         'resources/js/custom.js',
+        'resources/js/prism.js',
 ], 'public/js/all.js')
 
 

@@ -4,6 +4,7 @@
 
 Route::get('/', 'Frontend\HomeController@index')->name('/');
 Route::get('/detail', 'Frontend\HomeController@detail')->name('detail');
+Route::get('/test', 'TestController@index');
 
 
 
